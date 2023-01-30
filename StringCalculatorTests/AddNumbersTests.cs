@@ -45,20 +45,11 @@ namespace StringCalculatorTests
         }
 
         [Test]
-        public void AddNumbers_InputThreeNumbers_ReturnCorrectResult()
+        public void AddNumbers_DelimeterPlus_ReturnCorrectResult()
         {
-            var actual = _calculator.AddAndParseNumber("3, 3, 3");
+            var actual = _calculator.AddAndParseNumber("1+2");
 
-            Assert.That(actual, Is.EqualTo(9));
-        }
-
-        //этот тест тебе уже не нужен так как в немецкой кате его нет
-        [Test]
-        public void AddNumbers_InputDelimiter_ReturnCorrectResult()
-        {
-            var actual = _calculator.AddAndParseNumber("1\n2, 3");
-
-            Assert.That(actual, Is.EqualTo(6));
+            Assert.That(actual, Is.EqualTo(3));
         }
     }
 }

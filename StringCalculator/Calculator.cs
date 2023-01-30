@@ -13,17 +13,33 @@ namespace StringCalculator
             if (input == "" || input == "0")
                 return 0;
             
-            //var delimeter = ''; 
+            char delimeter;
 
             //if delimeter = '+' => +;
             //if delimeter = '-' => -;
             //if delimeter = '*' => *;
             //if delimeter = '/' => /;
 
-            var inputSplit = input.Split(
-                new string[] { ",", ".", "/", "|", ":", ";", "\r\n", "\r", "\n" },
-                StringSplitOptions.None);
+            if (input.Contains('+'))
+            {
+                delimeter = '+';
+            }
+            if (input.Contains('-'))
+            {
+                delimeter = '-';
+            }
+            if (input.Contains('*'))
+            {
+                delimeter = '*';
+            }
+            else
+            {
+                delimeter= '/';
+            }
+
+            var inputSplit = input.Split(',');
             int sum = 0;
+
             foreach (var i in inputSplit)
                 sum += int.Parse(i);
 
