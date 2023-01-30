@@ -8,11 +8,19 @@ namespace StringCalculator
 {
     public class Calculator
     {
-        public int AddNumber(string input)
+        public int AddAndParseNumber(string input)
         {
             if (input == "" || input == "0")
                 return 0;
-            return 1;
+
+            var inputSplit = input.Split(
+                new string[] { ",", ".", "/", "|", ":", ";", "\r\n", "\r", "\n" },
+                StringSplitOptions.None);
+            int sum = 0;
+            foreach (var i in inputSplit)
+                sum += int.Parse(i);
+
+            return sum;
         }
     }
 }

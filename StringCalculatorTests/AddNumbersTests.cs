@@ -7,37 +7,65 @@ namespace StringCalculatorTests
         [SetUp]
         public void Setup()
         {
-            Calculator calculator = new Calculator();
         }
+
+        Calculator _calculator = new Calculator();
 
         [Test]
         public void AddNumbers_InputEmpty_Return0()
         {
-            Calculator calculator = new Calculator();
+            var actual = _calculator.AddAndParseNumber("");
 
-            var actual = calculator.AddNumber("");
-
-            Assert.AreEqual(0, actual);
+            Assert.That(actual, Is.EqualTo(0));
         }
 
         [Test]
         public void AddNumbers_Input0_Return0()
         {
-            Calculator calculator = new Calculator();
+            var actual = _calculator.AddAndParseNumber("0");
 
-            var actual = calculator.AddNumber("0");
-
-            Assert.AreEqual(0, actual);
+            Assert.That(actual, Is.EqualTo(0));
         }
 
         [Test]
         public void AddNumbers_InputOne_Return1()
         {
-            Calculator calculator = new Calculator();
+            var actual = _calculator.AddAndParseNumber("1");
 
-            var actual = calculator.AddNumber("1");
 
-            Assert.AreEqual(1, actual);
+            Assert.That(actual, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void AddNumbers_InputTwoNumbers_ReturnCorrectResult()
+        {
+            var actual = _calculator.AddAndParseNumber("2, 2");
+
+            Assert.That(actual, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void AddNumbers_InputThreeNumbers_ReturnCorrectResult()
+        {
+            var actual = _calculator.AddAndParseNumber("3, 3, 3");
+
+            Assert.That(actual, Is.EqualTo(9));
+        }
+
+        [Test]
+        public void AddNumbers_InputDelimiter_ReturnCorrectResult()
+        {
+            var actual = _calculator.AddAndParseNumber("1\n2, 3");
+
+            Assert.That(actual, Is.EqualTo(6));
+        }
+
+        [Test]
+        public void AddNumbers_InputOtherDelimiter_ReturnCorrectResult()
+        {
+            var actual = _calculator.AddAndParseNumber("//;\n1;2");
+
+            Assert.That(actual, Is.EqualTo(3));
         }
     }
 }
