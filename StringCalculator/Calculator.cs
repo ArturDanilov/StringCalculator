@@ -12,6 +12,13 @@ namespace StringCalculator
         {
             if (input == "" || input == "0")
                 return 0;
+            
+            //var delimeter = ''; 
+
+            //if delimeter = '+' => +;
+            //if delimeter = '-' => -;
+            //if delimeter = '*' => *;
+            //if delimeter = '/' => /;
 
             var inputSplit = input.Split(
                 new string[] { ",", ".", "/", "|", ":", ";", "\r\n", "\r", "\n" },
