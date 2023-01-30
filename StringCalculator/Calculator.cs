@@ -8,15 +8,11 @@ namespace StringCalculator
 {
     public class Calculator
     {
-        //public bool IsString(int input)
-        //{
-        //    if (ToString()
-        //        return true;
-        //    return false;
-        //}
-        //public int Addieren(int a, int b)
-        //{
-        //    return a + b;
-        //}
+        public int AddNumber(string input)
+        {
+            if (input == "" || input == "0")
+                return 0;
+            return 1;
+        }
     }
 }
